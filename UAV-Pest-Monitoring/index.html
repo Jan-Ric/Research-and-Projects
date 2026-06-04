@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AgriHawk</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'c1': '#ADC178',
+            'c2': '#9BB068',
+            'c3': "#6c584c",
+            'c4': "#DACABD"
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    main {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50vh;
+      flex-grow: 1;
+    }
+
+    #main-background-video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -1;
+        filter: brightness(0.6);
+    }
+
+    .content-box {
+      background-color: rgba(255, 255, 255, 0.4);
+      padding: 2.5rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      max-width: 80%;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body class="flex flex-col min-h-screen font-sans">
+  <header class="bg-c3 text-white p-4 flex items-center justify-between relative z-10">
+    <div class="flex items-center space-x-4">
+<div class="flex items-center space-x-4">
+  <a href="{{ url_for('home') }}" class="flex items-center space-x-2">
+    <img src="{{ url_for('static', filename='Images/Logo.PNG') }}" alt="AgriHawk Logo" class="h-8 w-auto">
+    <span class="text-white text-2xl font-bold">AgriHawk</span>
+  </a>
+</div>
+    </div>
+  </header>
+
+  <main>
+    <video autoplay muted loop id="main-background-video">
+        <source src="{{ url_for('static', filename='Images/IndexVideo.mp4') }}" type="video/mp4">
+        <source src="{{ url_for('static', filename='Images/IndexVideo.webm') }}" type="video/webm">
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="content-box flex flex-col items-center text-center">
+      <h1 class="text-4xl md:text-5xl text-c3 font-extrabold mb-4">Welcome to AgriHawk!</h1>
+      <p class="text-lg md:text-xl text-c3 mb-8 leading-relaxed">Keep your corn crops healthy and thriving with smart insights.</p>
+
+      <a href="home.html">
+<button class="bg-c1 hover:bg-c2 text-white py-3 px-8 rounded-md text-xl font-semibold transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-c1 focus:ring-opacity-50">          Show Me
+        </button>
+      </a>
+    </div>
+  </main>
+
+</body>
+</html>

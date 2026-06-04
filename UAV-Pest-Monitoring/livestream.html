@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Livestream Page - AgriHawk</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'c1': '#ADC178',
+            'c2': '#9BB068',
+            'c3': "#6c584c",
+            'c4': "#DACABD",
+            'c5': "#876F60"
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="flex flex-col min-h-screen">
+
+  <header class="bg-c3 text-white p-4 flex items-center justify-between relative z-10">
+    <div class="flex items-center space-x-2">
+      <button id="menuToggle" class="text-white text-2xl focus:outline-none">
+        &#9776;
+      </button>
+
+      <div class="flex items-center space-x-4">
+        <a href="{{ url_for('home') }}" class="flex items-center space-x-2">
+          <img src="{{ url_for('static', filename='Images/Logo.PNG') }}" alt="AgriHawk Logo" class="h-8 w-auto">
+          <span class="text-white text-2xl font-bold">AgriHawk</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <nav id="sideMenu" class="fixed c3-0 left-0 h-full w-64 bg-c5 p-4 z-20 transform -translate-x-full transition-transform duration-300 ease-in-out">
+    <div class="flex justify-end mb-4">
+      <button id="closeMenu" class="text-white text-2xl focus:outline-none">&times;</button>
+    </div>
+    <ul class="space-y-4">
+      <li><a href="{{ url_for('home') }}" class="block text-white hover:text-c4">Home Page</a></li>
+      <li><a href="{{ url_for('livestream') }}" class="block text-white hover:text-c4">Livestream</a></li>
+      <li><a href="{{ url_for('history') }}" class="block text-white hover:text-c4">History</a></li>
+      <li><a href="{{ url_for('farms') }}" class="block text-white hover:text-c4">List of Farms</a></li>
+      <li><a href="{{ url_for('about') }}" class="block text-white hover:text-c4">About Us</a></li>
+    </ul>
+  </nav>
+
+  <main class="flex-grow flex flex-col items-center justify-center bg-c4 p-8">
+    <div class="w-full max-w-3xl bg-c3 p-4 shadow-lg flex flex-col items-center">
+      <h2 class="text-2xl font-bold text-white mb-4">Live Farm Feed</h2>
+      <img src="{{ url_for('video_feed') }}" alt="Live Stream from Farm" width="100%" class="rounded">
+    </div>
+  </main>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const sideMenu = document.getElementById('sideMenu');
+    const closeMenu = document.getElementById('closeMenu');
+
+    function openMenu() {
+      sideMenu.classList.remove('-translate-x-full');
+      sideMenu.classList.add('translate-x-0');
+    }
+
+    function closeMenuFunc() {
+      sideMenu.classList.remove('translate-x-0');
+      sideMenu.classList.add('-translate-x-full');
+    }
+
+    menuToggle.addEventListener('click', openMenu);
+    closeMenu.addEventListener('click', closeMenuFunc);
+
+    document.addEventListener('click', function(event) {
+      if (!sideMenu.contains(event.target) && !menuToggle.contains(event.target)) {
+        closeMenuFunc();
+      }
+    });
+  </script>
+
+</body>
+</html>

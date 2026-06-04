@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Farm Gallery - AgriHawk</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'c1': '#ADC178',
+            'c2': '#9BB068',
+            'c3': "#6c584c",
+            'c4': "#DACABD",
+            'c5': "#876F60"
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .background-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -1;
+      overflow: hidden;
+    }
+    .video-overlay {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      z-index: -1;
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+  </style>
+</head>
+
+<body class="flex flex-col min-h-screen relative">
+  <video autoplay muted loop class="background-video">
+    <source src="{{ url_for('static', filename='Images/FarmVideo.mp4') }}" type="video/mp4">
+  </video>
+  <div class="video-overlay"></div>
+
+  <header class="bg-c3 text-white p-4 flex items-center justify-between relative z-10">
+    <div class="flex items-center space-x-2">
+      <button id="menuToggle" class="text-white text-2xl focus:outline-none">
+        ☰
+      </button>
+
+      <div class="flex items-center space-x-4">
+        <a href="{{ url_for('home') }}" class="flex items-center space-x-2">
+          <img src="{{ url_for('static', filename='Images/Logo.PNG') }}" alt="AgriHawk Logo" class="h-8 w-auto">
+          <span class="text-white text-2xl font-bold">AgriHawk</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <nav id="sideMenu" class="fixed c3-0 left-0 h-full w-64 bg-c5 p-4 z-20
+          transform -translate-x-full transition-transform duration-300 ease-in-out">
+    <div class="flex justify-end mb-4">
+      <button id="closeMenu" class="text-white text-2xl focus:outline-none">×</button>
+    </div>
+
+    <ul class="space-y-4">
+      <li><a href="{{ url_for('home') }}" class="block text-white hover:text-c4">Home Page</a></li>
+      <li><a href="{{ url_for('livestream') }}" class="block text-white hover:text-c4">Livestream</a></li>
+      <li><a href="{{ url_for('history') }}" class="block text-white hover:text-c4">History</a></li>
+      <li><a href="{{ url_for('farms') }}" class="block text-white hover:text-c4">List of Farms</a></li>
+      <li><a href="{{ url_for('about') }}" class="block text-white hover:text-c4">About Us</a></li>
+    </ul>
+  </nav>
+
+  <main class="flex-grow flex flex-col items-center justify-center p-8">
+    <div class="gallery-grid-container">
+      <h2 class="text-5xl text-c5 font-bold mb-8 text-shadow-md">Farm Gallery</h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-2xl mx-auto">
+        <a href="farm1.html" class="gallery-item-wrapper transform transition-transform duration-300 hover:scale-105">
+          <img src="{{ url_for('static', filename='Images/Farm1.png') }}"
+                alt="Farm 1 Image"
+                class="w-full aspect-video object-cover rounded-lg shadow-md"
+          >
+          <div class="gallery-item-overlay">
+            <h3 class="text-xl font-semibold">Farm 1</h3>
+          </div>
+        </a>
+
+        <a href="farm2.html" class="gallery-item-wrapper transform transition-transform duration-300 hover:scale-105">
+          <img src="{{ url_for('static', filename='Images/Farm2.png') }}"
+                alt="Farm 2 Image"
+                class="w-full aspect-video object-cover rounded-lg shadow-md"
+          >
+          <div class="gallery-item-overlay">
+            <h3 class="text-xl font-semibold">Farm 2</h3>
+          </div>
+        </a>
+
+        <a href="farm3.html" class="gallery-item-wrapper transform transition-transform duration-300 hover:scale-105">
+          <img src="{{ url_for('static', filename='Images/Farm3.png') }}"
+                alt="Farm 3 Image"
+                class="w-full aspect-video object-cover rounded-lg shadow-md"
+          >
+          <div class="gallery-item-overlay">
+            <h3 class="text-xl font-semibold">Farm 3</h3>
+          </div>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const sideMenu = document.getElementById('sideMenu');
+    const closeMenu = document.getElementById('closeMenu');
+
+    function openMenu() {
+      sideMenu.classList.remove('-translate-x-full');
+      sideMenu.classList.add('translate-x-0');
+    }
+
+    function closeMenuFunc() {
+      sideMenu.classList.remove('translate-x-0');
+      sideMenu.classList.add('-translate-x-full');
+    }
+
+    menuToggle.addEventListener('click', openMenu);
+    closeMenu.addEventListener('click', closeMenuFunc);
+
+    document.addEventListener('click', function(event) {
+      if (!sideMenu.contains(event.target) && !menuToggle.contains(event.target)) {
+        closeMenuFunc();
+      }
+    });
+  </script>
+
+</body>
+</html>

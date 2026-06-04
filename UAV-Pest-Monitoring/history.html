@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>History Page - PestPatrol</title>
+  <link rel="icon" href="{{ url_for('static', filename='Images/Logo.PNG') }}" type="image/png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'c1': '#ADC178',
+            'c2': '#9BB068',
+            'c3': "#6c584c",
+            'c4': "#DACABD",
+            'c5': "#876F60",
+            'c6': "#D0DBB1"
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+      body {
+          font-family: 'Inter', sans-serif;
+      }
+      .recommendation-text {
+          white-space: pre-wrap; /* This helps in respecting newlines from the AI response */
+      }
+  </style>
+</head>
+
+<body class="flex flex-col min-h-screen">
+
+  <header class="bg-c3 text-white p-4 flex items-center justify-between relative z-10">
+    <div class="flex items-center space-x-2">
+      <button id="menuToggle" class="text-white text-2xl focus:outline-none">
+        &#9776;
+      </button>
+
+    <div class="flex items-center space-x-4">
+      <a href="https://agrihawk.pythonanywhere.com/" class="flex items-center space-x-2">
+        <img src="{{ url_for('static', filename='Images/Logo.PNG') }}" alt="AgriHawk Logo" class="h-8 w-auto">
+        <span class="text-white text-2xl font-bold">PestPatrol</span>
+      </a>
+    </div>
+    </div>
+  </header>
+
+  <nav id="sideMenu" class="fixed c3-0 left-0 h-full w-64 bg-c5 p-4 z-20
+                            transform -translate-x-full transition-transform duration-300 ease-in-out">
+    <div class="flex justify-end mb-4">
+      <button id="closeMenu" class="text-white text-2xl focus:outline-none">&times;</button>
+    </div>
+    <ul class="space-y-4">
+      <li><a href="{{ url_for('home') }}" class="block text-white hover:text-c4">Home Page</a></li>
+      <li><a href="{{ url_for('livestream') }}" class="block text-white hover:text-c4">Livestream</a></li>
+      <li><a href="{{ url_for('history') }}" class="block text-white hover:text-c4">History</a></li>
+      <li><a href="{{ url_for('farms') }}" class="block text-white hover:text-c4">List of Farms</a></li>
+      <li><a href="{{ url_for('about') }}" class="block text-white hover:text-c4">About Us</a></li>
+    </ul>
+  </nav>
+
+   <main class="flex-grow flex flex-col items-center bg-c4">
+        <section class="text-c3 py-14 px-8 w-full mt-10 rounded-lg">
+              <div class="max-w-6xl mx-auto text-center mb-10">
+                    <h2 class="text-6xl text-c2 font-extrabold tracking-wide mb-2">
+                      Data History
+                    </h2>
+                    <p class="text-c5 text-lg italic">
+                      Review and manage your previously recorded drone analytics and pest data.
+                    </p>
+                  </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 history-container">
+
+              <div class="flex flex-col items-start p-8 bg-white rounded-2xl shadow-lg history-card">
+                <div class="flex flex-col md:flex-row gap-6 w-full">
+                  <div class="flex-grow text-left">
+                    <h3 class="text-3xl font-bold text-c3 mb-3">Date: 2025-06-24</h3>
+                    <h4 class="text-base text-c3 mb-2 pest-density-info">Pest Density Population: High (15 pests / sq. meter)</h4>
+                    <div class="mt-4">
+                        <button class="get-recommendation-btn bg-c2 hover:bg-c1 text-white font-bold py-2 px-4 rounded transition-colors duration-300">
+                            Get Recommended Action
+                        </button>
+                    </div>
+                    <div class="recommendation-area mt-4 hidden">
+                        <h4 class="text-base font-semibold text-c5 mb-2">Recommended Action:</h4>
+                        <p class="text-sm text-gray-700 recommendation-text"></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex flex-col items-start p-8 bg-white rounded-2xl shadow-lg history-card">
+                <div class="flex flex-col md:flex-row gap-6 w-full">
+                  <div class="flex-grow text-left">
+                    <h3 class="text-3xl font-bold text-c3 mb-3">Date: 2025-06-20</h3>
+                    <h4 class="text-base text-c3 mb-2 pest-density-info">Pest Density Population: Low (2 pests / sq. meter)</h4>
+                     <div class="mt-4">
+                        <button class="get-recommendation-btn bg-c2 hover:bg-c1 text-white font-bold py-2 px-4 rounded transition-colors duration-300">
+                            Get Recommended Action
+                        </button>
+                    </div>
+                    <div class="recommendation-area mt-4 hidden">
+                        <h4 class="text-base font-semibold text-c5 mb-2">Recommended Action:</h4>
+                        <p class="text-sm text-gray-700 recommendation-text"></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <p class="text-c5 text-center mt-8 italic">Click the button in a card to generate a pest control recommendation.</p>
+        </section>
+  </main>
+
+  <script>
+    // --- Menu Toggle Script ---
+    const menuToggle = document.getElementById('menuToggle');
+    const sideMenu = document.getElementById('sideMenu');
+    const closeMenu = document.getElementById('closeMenu');
+
+    function openMenu() {
+      sideMenu.classList.remove('-translate-x-full');
+      sideMenu.classList.add('translate-x-0');
+    }
+
+    function closeMenuFunc() {
+      sideMenu.classList.remove('translate-x-0');
+      sideMenu.classList.add('-translate-x-full');
+    }
+
+    menuToggle.addEventListener('click', openMenu);
+    closeMenu.addEventListener('click', closeMenuFunc);
+
+    document.addEventListener('click', function(event) {
+      if (!sideMenu.contains(event.target) && !menuToggle.contains(event.target)) {
+        closeMenuFunc();
+      }
+    });
+
+    // --- Recommendation Fetch Script ---
+    document.addEventListener('DOMContentLoaded', () => {
+        const historyContainer = document.querySelector('.history-container');
+
+        historyContainer.addEventListener('click', function(event) {
+            if (event.target.classList.contains('get-recommendation-btn')) {
+                const button = event.target;
+                const card = button.closest('.history-card');
+                const pestDensityInfo = card.querySelector('.pest-density-info').textContent;
+                const recommendationArea = card.querySelector('.recommendation-area');
+                const recommendationText = card.querySelector('.recommendation-text');
+
+                // Extract the pest density value from the text
+                const pestDensity = pestDensityInfo.replace('Pest Density Population: ', '').trim();
+
+                button.textContent = 'Generating...';
+                button.disabled = true;
+
+                fetch('/get_recommendation', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ pest_density: pestDensity })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.recommendation) {
+                        recommendationText.textContent = data.recommendation;
+                        recommendationArea.classList.remove('hidden');
+                        button.classList.add('hidden'); // Hide the button after getting the recommendation
+                    } else {
+                        recommendationText.textContent = 'Error: ' + data.error;
+                        recommendationArea.classList.remove('hidden');
+                        button.textContent = 'Try Again';
+                        button.disabled = false;
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    recommendationText.textContent = 'An error occurred while fetching the recommendation.';
+                    recommendationArea.classList.remove('hidden');
+                    button.textContent = 'Try Again';
+                    button.disabled = false;
+                });
+            }
+        });
+    });
+  </script>
+
+</body>
+</html>

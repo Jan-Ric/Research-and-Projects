@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Page - AgriHawk</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'c1': '#ADC178',
+            'c2': '#9BB068',
+            'c3': "#6c584c",
+            'c4': "#DACABD",
+            'c5': "#876F60"
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="flex flex-col min-h-screen">
+
+  <header class="bg-c3 text-white p-4 flex items-center justify-between relative z-10">
+    <div class="flex items-center space-x-2">
+      <button id="menuToggle" class="text-white text-2xl focus:outline-none">
+        &#9776; 
+      </button>
+
+<div class="flex items-center space-x-4">
+  <a href="index.html" class="flex items-center space-x-2">
+    <img src="{{ url_for('static', filename='Images/Logo.PNG') }}" alt="AgriHawk Logo" class="h-8 w-auto">
+    <span class="text-white text-2xl font-bold">AgriHawk</span>
+  </a>
+</div>
+    </div>
+  </header>
+
+  <nav id="sideMenu" class="fixed c3-0 left-0 h-full w-64 bg-c5 p-4 z-20 
+                             transform -translate-x-full transition-transform duration-300 ease-in-out">
+    <div class="flex justify-end mb-4">
+      <button id="closeMenu" class="text-white text-2xl focus:outline-none">&times;</button>
+    </div>
+    <ul class="space-y-4">
+      <li><a href="{{ url_for('home') }}" class="block text-white hover:text-c4">Home Page</a></li>
+      <li><a href="{{ url_for('livestream') }}" class="block text-white hover:text-c4">Livestream</a></li>
+      <li><a href="{{ url_for('history') }}" class="block text-white hover:text-c4">History</a></li>
+      <li><a href="{{ url_for('farms') }}" class="block text-white hover:text-c4">List of Farms</a></li>
+      <li><a href="{{ url_for('about') }}" class="block text-white hover:text-c4">About Us</a></li>
+    </ul>
+  </nav>
+
+  <main class="flex-grow bg-c4 p-8"> 
+    <div class="max-w-4xl mx-auto content-section">
+      <h1 class="text-4xl font-bold text-c3 mt-4 mb-8">About AgriHawk</h1>
+
+      <p class="text-c3">AgriHawk is an innovative research project focused on the development of a UAV-based corn pest monitoring system. This system utilizes YOLOv11-SAHI for pest detection, aiming to provide precise and efficient agricultural surveillance. It serves as a crucial tool to address the growing need for advanced pest management solutions in corn farming.</p> 
+    
+          <h2 class="text-2xl font-bold text-c3 mb-2 mt-12">Key Questions We're Answering:</h2>
+
+        <ul class="text-c3 mb-12">
+          <li>1. How can the drone system be optimized for night-time use, considering low-light imaging and precise flight control?
+</li>
+          <li>2.	How accurate is the AI-powered camera in detecting and counting corn pests during both day and night?
+</li>
+          <li>3.	How well does the UAV perform in the field, and how does YOLOv11 compare to YOLOv11-SAHI for night-time pest detection?
+</li>
+        </ul>
+    
+      <h1 class="text-2xl font-bold text-c3 mb-2 mt-12">What We Aim To Achieve:</h1>
+      <p class="text-c3 mb-4">Assess and compare pest detection accuracy between the baseline YOLOv11 model and the YOLOv11-SAHI framework during autonomous nocturnal UAV surveys in cornfields, while evaluating navigation, image acquisition, and data transmission performance.
+</p>
+      <p class="text-c3">• Design and configure an automated UAV system with a calibrated computer vision setup for effective corn pest monitoring. </p>
+      <p class="text-c3">• Collect and preprocess a comprehensive dataset to support accurate detection and counting of corn pests.</p>
+      <p class="text-c3">• Develop and train AI models using YOLOv11 integrated with SAHI for precise pest identification and quantification, and compute Pest Population Density Metrics alongside the VARI index to assess crop health.</p>
+      <p class="text-c3">• Integrate the trained AI model into the UAV for real-time pest detection and efficient data transmission during night-time operations.</p>
+      <p class="text-c3">• Conduct performance comparisons between YOLOv11 and YOLOv11-SAHI in terms of detection accuracy and overall UAV system efficiency during nocturnal surveys.</p>
+
+
+
+    <h1 class="text-2xl font-bold text-c3 mt-12">How We're Making a Difference:</h1>
+      <p class="text-c3 mt-2 font-bold">Contribution to Pest Management</p>
+      <p class="text-c3">Automated drones revolutionize crop monitoring by detecting pests and analyzing population density with precision. Through autonomous flight and AI-powered vision, they deliver fast, accurate insights into crop health—reducing manual labor and making field surveillance scalable, even in remote areas.</p>
+
+      <p class="text-c3 mt-4 font-bold">Technological Advancements in Pest Monitoring</p>
+      <p class="text-c3">Automated drones offer innovative crop monitoring by providing pest detection and population density analysis.  Their autonomous flight enables comprehensive field surveillance, giving farmers precise data on crop health and pest threats.  Automated pest identification and quantification via computer vision significantly improves traditional methods, offering a scalable, efficient solution, especially in remote areas, by minimizing manual labor and providing rapid, accurate assessments.</p>
+
+      <p class="text-c3 mt-4 font-bold">Enhancement of Pest Detection Accuracy and Efficiency</p>
+      <p class="text-c3">Using autonomous drones equipped with the YOLOv11 algorithm, this system delivers high-precision pest detection and population analysis. It enables faster, more accurate interventions by improving key performance metrics like accuracy, precision, recall, and F1-score. This advanced approach supports early pest detection and targeted crop protection, making it a powerful tool for modern maize farming.</p>
+
+      <p class="text-c3 mt-4 font-bold">Ecological Balance</p>
+      <p class="text-c3">This project introduces a cutting-edge approach to crop monitoring using autonomous drones equipped with advanced population analysis. By combining AI and robotics, the system offers farmers a precise, efficient, and non-invasive way to track crop health and pest populations. It reduces the need for manual field inspections and helps minimize environmental impact, paving the way for smarter agricultural management and better crop yield predictions.</p>
+
+      <p class="text-c3 mt-4 font-bold">Long-Term Impact on Agricultural Productivity</p>
+      <p class="text-c3">Autonomous drones monitor crops and detect pests early, reducing the need for constant field inspections. These drones help identify issues quickly and deliver targeted solutions, protecting crops while minimizing waste. This tech-driven approach supports smarter farming, environmental care, and healthier harvests.</p>
+
+
+
+      <h1 class="text-c3 mt-12 font-bold">Members:</h1>
+      <p class="text-c3">Jana Rose A. Bongalon</p>
+      <p class="text-c3">Natalia Paula Yemena B. Gavilan</p>
+      <p class="text-c3">Clarence Joseph M. Gavina</p>
+      <p class="text-c3">Jan Ric M. Hogat</p>
+      <p class="text-c3">Christine H. Ignacio</p>
+      <p class="text-c3">Thesis Adviser: Engr. Marife A. Rosales, MSEE, ECE</p>
+
+      <h1 class="text-c3 mt-12 font-bold">Thank you for exploring the AgriHawk UAV-based corn pest monitoring system.</h1>
+  </main>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const sideMenu = document.getElementById('sideMenu');
+    const closeMenu = document.getElementById('closeMenu');
+
+    function openMenu() {
+      sideMenu.classList.remove('-translate-x-full');
+      sideMenu.classList.add('translate-x-0');
+    }
+
+    function closeMenuFunc() {
+      sideMenu.classList.remove('translate-x-0');
+      sideMenu.classList.add('-translate-x-full');
+    }
+
+    menuToggle.addEventListener('click', openMenu);
+    closeMenu.addEventListener('click', closeMenuFunc);
+
+    document.addEventListener('click', function(event) {
+      if (!sideMenu.contains(event.target) && !menuToggle.contains(event.target)) {
+        closeMenuFunc();
+      }
+    });
+  </script>
+
+</body>
+</html>
