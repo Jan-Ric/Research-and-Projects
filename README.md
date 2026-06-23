@@ -6,6 +6,7 @@ This is a compilation of my academic research and engineering projects completed
 
 | Project Title | Domain | Key Impact | Link |
 | :--- | :--- | :--- | :--- |
+| ISO-Based Energy Audit & 10-Year Demand Forecasting for Barangay Lower Bicutan | Data Analytics / Time-Series Forecasting | Cut projected energy costs by Php 161,121/year; reduced monthly consumption by 1,220.84 kWh (24%) against a 2.625%-error-validated baseline | [View Project](./Energy-Audit) |
 | IoT-Based Automated Medicine Dispenser | API & IoT | Delivered sub-1-second API response times and near-100% adherence with IoT-based automated dispensing. | [View Project](https://github.com/Jan-Ric/IoT-pill-dispenser) |
 | Autonomous AI-Powered UAV Pest Monitoring System | Capstone | Reduced pesticide usage by ~25% using AI and data-driven UAV pest estimation validated with local farmers. | [View Project](./UAV-Pest-Monitoring) |
 | Automated 6-DOF Robotic Arm Banana Sorting System | Robotics | Achieved ~95% banana classification accuracy using YOLOv11-based computer vision and robotic arm automation. | [View Project](./Robotic-Arm-Sorting) |
