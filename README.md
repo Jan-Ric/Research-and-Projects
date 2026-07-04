@@ -13,5 +13,7 @@ This is a compilation of my academic research and engineering projects completed
 | Automated 6-DOF Robotic Arm Banana Sorting System | Robotics | Achieved ~95% banana classification accuracy using YOLOv11-based computer vision and robotic arm automation. | [View Project](./Robotic-Arm-Sorting) |
 | Techno-Economic Analysis of Floating Offshore Wind vs. Solar PV Farm | Renewable Energy | Identified offshore wind as the optimal grid solution for Panay Island, producing 169,151 MWh AEP at ₱0.102/kWh LCoE. | [View Project](./Wind-Solar-Analysis) |
 | VHF/UHF Low-Cost Discone Strip Antenna System | Antenna Systems | Achieved RST scores of 6 to 6.67 via recycled-material antenna, matching >60% consumer TV antenna signal quality. | [View Project](./Discone-Antenna) |
+| Critical Review of QR Code Utilization Study | Research Review · Data Analysis | Conducted a critical methodological review of an undergraduate QR code utilization study, identifying statistical inconsistencies, invalid hypothesis testing, sampling issues, and reliability concerns while recognizing its descriptive contributions. | [View Project](./QR-Code-Research-Review) |
 | Arduino-Based Water Distillation System | Embedded Systems | Developed a real-time monitoring prototype compliant with PNS 2017 drinking water quality standards. | [View Project](./Water-Distillation) |
+
 
