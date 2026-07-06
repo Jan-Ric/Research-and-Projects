@@ -1,4 +1,4 @@
-# PestPatrol: UAV-Based Corn Pest Monitoring System Utilizing Multimodal Model
+# PestPatrol: UAV-Based Corn Pest Monitoring System Utilizing Multimodal Model ([Preview](https://drive.google.com/file/d/1ev08yRQ47kbn1T7E6S3-4tSq8tQklnre/view?usp=drive_link))
 
 PestPatrol is a comprehensive, cost-effective Unmanned Aerial Vehicle (UAV) monitoring system designed to detect and calculate the population density of nocturnal corn pests using high-resolution RGB imagery and a multimodal artificial intelligence model. 
 
