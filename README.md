@@ -1,6 +1,8 @@
 # Academic Research Projects and Personal Projects
 
-This is a compilation of my academic research and engineering projects completed under the BS Electronics Engineering program at PUP. The repository showcases applied research across embedded systems, robotics, renewable energy, and telecommunications.
+This is a compilation of my academic research and engineering projects completed under the BS Electronics Engineering program at PUP. The repository showcases applied research across data analytics, robotics and computer vision, renewable energy, and telecommunications and embedded systems.
+
+_Note: These projects and research academics are defended in the PUP ECE Department Faculties, not published in IEEE._
 
 ## Project Directory
 
